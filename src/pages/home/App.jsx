@@ -17,16 +17,17 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div>
-        <span className="bg-blue-500 rounded-full text-white inline-block p-[5px] cursor-pointer" onClick={() => setCount((count) => count + 1)}>
+        <span
+          className="bg-blue-500 rounded-full text-white inline-block p-[5px] cursor-pointer"
+          onClick={() => setCount((count) => count + 1)}
+        >
           count is {count}
         </span>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p>
-        Click on the Vite and React logos to learn more
-      </p>
+      <p>Click on the Vite and React logos to learn more</p>
     </>
   )
 }

@@ -1,12 +1,20 @@
-# React + Vite
+# React@19.x + Vite@6.x
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## redux
+> 通过集中管理的方式管理应用的状态
 
-Currently, two official plugins are available:
+### `@reduxjs/toolkit`搭配`react-redux`使用
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 定义reducer函数
+- 使用createstore传入reducer,生成store实例对象
+- 使用store实例的subscribe方式订阅数据变化
+- 使用store实例的dispatch提交action对象出发数据变化
+- 使用getState获取最新状态数据
 
-## Expanding the ESLint configuration
+```js
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+
+## router
+### react-router-dom
+

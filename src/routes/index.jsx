@@ -18,28 +18,28 @@ import Channel from '../pages/channel'
 
 const routes = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     errorElement: <Error />,
     children: [
       {
-        index: true,        // 默认子路由
+        index: true, // 默认子路由
         element: <App />,
       },
       {
-        path: "game",
+        path: 'game',
         element: <Game />,
       },
       {
-        path: "counter",
+        path: 'counter',
         element: <Counter />,
       },
       {
-        path: "channel",
+        path: 'channel',
         element: <Channel />,
-      }
+      },
     ],
-  }
+  },
 ])
 
 export default routes
