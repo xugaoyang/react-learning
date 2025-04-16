@@ -19,6 +19,10 @@ function Layout() {
         <NavLink to="/channel" end>
           channel
         </NavLink>
+        <span className="m-5 text-blue-500">|</span>
+        <NavLink to="/article" end>
+          article
+        </NavLink>
       </nav>
       <main>
         <Outlet />

@@ -5,6 +5,9 @@ import Error from '../pages/404'
 import Layout from '../layout'
 import Counter from '../pages/counter'
 import Channel from '../pages/channel'
+import Article from '@/pages/article'
+import ArticleDetail from '@/pages/article/ArticleDetail'
+
 // const routes = () => {
 //   return (
 //     <BrowserRouter>
@@ -37,6 +40,14 @@ const routes = createBrowserRouter([
       {
         path: 'channel',
         element: <Channel />,
+      },
+      {
+        path: 'article',
+        element: <Article />,
+      },
+      {
+        path: 'articleDetail/:id',
+        element: <ArticleDetail />,
       },
     ],
   },
