@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import App from '@/pages/Home/App'
 import Game from '@/pages/Game'
 import Error from '@/pages/404'
-import Layout from '@/layout'
+import AppLayout from '@/layout'
 import Counter from '@/pages/Counter'
 import Channel from '@/pages/Channel'
 import Article from '@/pages/Article'
@@ -12,7 +12,7 @@ import Login from '@/pages/Login'
 const routes = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <AppLayout />,
     errorElement: <Error />,
     children: [
       {
