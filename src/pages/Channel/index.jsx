@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchChannelList } from '@/store/channel'
+import { fetchChannelList } from '@/store/modules/channel'
 
 function Channel() {
   const { channelList } = useSelector((state) => state.channel)
