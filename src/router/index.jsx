@@ -1,23 +1,13 @@
-import { BrowserRouter, Routes, Route, createBrowserRouter } from 'react-router-dom'
-import App from '../pages/home/App.jsx'
-import Game from '../pages/game/index.jsx'
-import Error from '../pages/404/index.jsx'
-import Layout from '../layout/index.jsx'
-import Counter from '../pages/counter/index.jsx'
-import Channel from '../pages/channel/index.jsx'
-import Article from '@/pages/article'
-import ArticleDetail from '@/pages/article/ArticleDetail'
-
-// const routes = () => {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<App />} />
-//         <Route path="/game" element={<Game />} />
-//       </Routes>
-//     </BrowserRouter>
-//   )
-// }
+import { createBrowserRouter } from 'react-router-dom'
+import App from '@/pages/Home/App'
+import Game from '@/pages/Game'
+import Error from '@/pages/404'
+import Layout from '@/layout'
+import Counter from '@/pages/Counter'
+import Channel from '@/pages/Channel'
+import Article from '@/pages/Article'
+import ArticleDetail from '@/pages/Article/ArticleDetail'
+import Login from '@/pages/Login'
 
 const routes = createBrowserRouter([
   {
@@ -50,6 +40,10 @@ const routes = createBrowserRouter([
         element: <ArticleDetail />,
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
 ])
 
