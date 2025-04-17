@@ -1,12 +1,17 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchChannelList } from '@/store/modules/channel'
+import { setChannel } from '@/store/modules/channel'
+import { getChannelList } from '@/apis/channel'
 
 function Channel() {
   const { channelList } = useSelector((state) => state.channel)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchChannelList())
+    const getChannels = async () => {
+      const res = await getChannelList()
+      dispatch(setChannel(res.data.channels))
+    }
+    getChannels()
   }, [])
 
   return (

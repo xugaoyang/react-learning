@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import axios from 'axios'
 
 const channelStore = createSlice({
   name: 'channel',
@@ -12,14 +11,14 @@ const channelStore = createSlice({
     },
   },
 })
-const { setChannel } = channelStore.actions
-const fetchChannelList = () => {
-  return async (dispatch) => {
-    const res = await axios.get('http://geek.itheima.net/v1_0/channels')
-    dispatch(setChannel(res.data.data.channels))
-  }
-}
+export const { setChannel } = channelStore.actions
+// const fetchChannelList = () => {
+//   return async (dispatch) => {
+//     const res = await axios.get('http://geek.itheima.net/v1_0/channels')
+//     dispatch(setChannel(res.data.data.channels))
+//   }
+// }
 
-export { fetchChannelList }
+// export { fetchChannelList }
 
 export default channelStore.reducer
