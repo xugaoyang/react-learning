@@ -1,18 +1,21 @@
-import { Card, Form, Input, Button } from 'antd'
+import { Card, Form, Input, Button, message } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import reactLogo from '@/assets/react.svg'
 import viteLogo from '/vite.svg'
-import {fetchLogin} from '@/store/modules/user'
+import {setToken} from '@/store/modules/user'
 import { useDispatch } from 'react-redux'
+import { login } from '@/apis/user'
 
 function Login() {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('Success:', values)
-    dispatch(fetchLogin(values))
-    // navigate('/')
+    const res = await login(values)
+    dispatch(setToken(res.data.token))
+    message.success('登陆成功!')
+    navigate('/')
   }
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo)
