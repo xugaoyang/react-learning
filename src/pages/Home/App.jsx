@@ -1,6 +1,6 @@
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '/vite.svg'
-import {Button} from 'antd'
+import { Button } from 'antd'
 
 function App() {
   return (
