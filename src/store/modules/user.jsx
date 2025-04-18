@@ -13,9 +13,13 @@ const userStore = createSlice({
     setUserInfo(state, action) {
       state.userInfo = action.payload
     },
+    clearUserInfo(state) {
+      state.token = ''
+      state.userInfo = {}
+    }
   },
 })
 
-const { setToken, setUserInfo } = userStore.actions
-export { setToken, setUserInfo }
+const { setToken, setUserInfo, clearUserInfo } = userStore.actions
+export { setToken, setUserInfo, clearUserInfo }
 export default userStore.reducer
