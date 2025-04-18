@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 import { useNavigate, Outlet } from 'react-router'
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
   MailOutlined,
 } from '@ant-design/icons'
 import { Button, Layout, Menu, theme } from 'antd'
-const { Header, Sider, Content } = Layout
+import reactLogo from '@/assets/react.svg'
+import AppHeader from './AppHeader'
+
+const { Sider, Content } = Layout
 
 function AppLayout() {
   const [collapsed, setCollapsed] = useState(false)
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { borderRadiusLG, colorBgContainer },
   } = theme.useToken()
   const navigate = useNavigate()
   const items = [
@@ -46,22 +47,13 @@ function AppLayout() {
   return (
     <Layout className="w-full h-full">
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
+        <div className="h-[64px] flex justify-center items-center">
+          <img src={reactLogo} alt="" />
+        </div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['/']} items={items} onClick={onClick} />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
-            }}
-          />
-        </Header>
+        <AppHeader setCollapsed={setCollapsed} collapsed={collapsed}/>
         <Content
           style={{
             margin: '24px 16px',

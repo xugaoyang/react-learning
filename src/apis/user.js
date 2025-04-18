@@ -4,4 +4,8 @@ const login = async (form) => {
   return await request.post('/authorizations', form)
 }
 
-export { login }
+const getUser = async () => {
+  return await request.get('/user/profile')
+}
+
+export { login, getUser }
