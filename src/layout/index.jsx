@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate, Outlet } from 'react-router'
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
@@ -10,13 +8,14 @@ import {
 } from '@ant-design/icons'
 import { Button, Layout, Menu, theme } from 'antd'
 import reactLogo from '@/assets/react.svg'
+import AppHeader from './AppHeader'
 
-const { Header, Sider, Content } = Layout
+const { Sider, Content } = Layout
 
 function AppLayout() {
   const [collapsed, setCollapsed] = useState(false)
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { borderRadiusLG, colorBgContainer },
   } = theme.useToken()
   const navigate = useNavigate()
   const items = [
@@ -54,18 +53,7 @@ function AppLayout() {
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['/']} items={items} onClick={onClick} />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
-            }}
-          />
-        </Header>
+        <AppHeader setCollapsed={setCollapsed} collapsed={collapsed}/>
         <Content
           style={{
             margin: '24px 16px',
