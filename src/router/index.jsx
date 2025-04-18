@@ -8,12 +8,13 @@ import Channel from '@/pages/Channel'
 import Article from '@/pages/Article'
 import ArticleDetail from '@/pages/Article/ArticleDetail'
 import Login from '@/pages/Login'
+import NotFound from '@/pages/Error/NotFound'
 
 const routes = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
-    errorElement: <Error />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true, // 默认子路由

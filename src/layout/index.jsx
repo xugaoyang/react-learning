@@ -9,6 +9,8 @@ import {
   MailOutlined,
 } from '@ant-design/icons'
 import { Button, Layout, Menu, theme } from 'antd'
+import reactLogo from '@/assets/react.svg'
+
 const { Header, Sider, Content } = Layout
 
 function AppLayout() {
@@ -46,7 +48,9 @@ function AppLayout() {
   return (
     <Layout className="w-full h-full">
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
+        <div className="h-[64px] flex justify-center items-center">
+          <img src={reactLogo} alt="" />
+        </div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['/']} items={items} onClick={onClick} />
       </Sider>
       <Layout>
