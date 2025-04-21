@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client'
 import './index.scss'
 import routes from './router'
 import { RouterProvider } from 'react-router-dom'
-
 import { Provider } from 'react-redux'
 import { store, persistor } from './store'
 import { PersistGate } from 'redux-persist/integration/react'

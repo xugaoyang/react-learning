@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import type { PopconfirmProps } from 'antd'
 import { Layout, theme, Button, Popconfirm } from 'antd'
 import { MenuFoldOutlined, MenuUnfoldOutlined, LoginOutlined } from '@ant-design/icons'
 import { getUserApi } from '@/apis/user'
@@ -21,7 +22,7 @@ function AppHeader() {
   useEffect(() => {
     getUserFn()
   }, [])
-  const confirmLogout = () => {
+  const confirmLogout: PopconfirmProps['onConfirm'] = () => {
     // 清除用户信息；进入登录
     dispatch(clearUserInfo())
     navigate('/login')
@@ -45,6 +46,7 @@ function AppHeader() {
         <img className="w-[20px] h-[20px] rounded-full mr-[10px]" src={userInfo.photo} alt="" />
         <span className="mr-[10px]">{userInfo.name}</span>
         <Popconfirm
+          title=""
           placement="left"
           description="是否退出登录?"
           onConfirm={confirmLogout}

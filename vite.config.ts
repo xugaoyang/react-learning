@@ -10,4 +10,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'), // 将 @ 映射到 src 目录
     },
   },
+  build: {
+    sourcemap: true
+  }
 })

@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate, Outlet } from 'react-router'
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  MailOutlined,
-} from '@ant-design/icons'
+import { UploadOutlined, UserOutlined, VideoCameraOutlined, MailOutlined } from '@ant-design/icons'
 import { Button, Layout, Menu, theme } from 'antd'
 import reactLogo from '@/assets/react.svg'
 import AppHeader from './AppHeader'
@@ -15,10 +10,8 @@ import { setMenuDefaultKey } from '@/store/modules/setting'
 const { Sider, Content } = Layout
 
 function AppLayout() {
-  const { isCollapse,menuDefaultKey } = useSelector((state) => state.setting)
+  const { isCollapse, menuDefaultKey } = useSelector((state) => state.setting)
   const dispatch = useDispatch()
-  // const [collapsed, setCollapsed] = useState(false)
-  // const [defaultKey, setDefaultKey] = useState('/')
   const {
     token: { borderRadiusLG, colorBgContainer },
   } = theme.useToken()
@@ -56,7 +49,13 @@ function AppLayout() {
         <div className="h-[64px] flex justify-center items-center">
           <img src={reactLogo} alt="" />
         </div>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={[menuDefaultKey]} items={items} onClick={onClick} />
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={[menuDefaultKey]}
+          items={items}
+          onClick={onClick}
+        />
       </Sider>
       <Layout>
         <AppHeader />
