@@ -3,17 +3,19 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Layout, theme, Button, Popconfirm } from 'antd'
 import { MenuFoldOutlined, MenuUnfoldOutlined, LoginOutlined } from '@ant-design/icons'
-import { getUser } from '@/apis/user'
+import { getUserApi } from '@/apis/user'
 import { setUserInfo, clearUserInfo } from '@/store/modules/user'
+import { setIsCollapse } from '@/store/modules/setting'
 
 const { Header } = Layout
 
-function AppHeader({ setCollapsed, collapsed }) {
+function AppHeader() {
   const navigate = useNavigate()
   const { userInfo } = useSelector((state) => state.user)
+  const { isCollapse } = useSelector((state) => state.setting)
   const dispatch = useDispatch()
   const getUserFn = async () => {
-    const res = await getUser()
+    const res = await getUserApi()
     dispatch(setUserInfo(res.data))
   }
   useEffect(() => {
@@ -31,8 +33,8 @@ function AppHeader({ setCollapsed, collapsed }) {
     <Header style={{ padding: 0, background: colorBgContainer }} className="flex justify-between">
       <Button
         type="text"
-        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        onClick={() => setCollapsed(!collapsed)}
+        icon={isCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        onClick={() => dispatch(setIsCollapse(!isCollapse))}
         style={{
           fontSize: '16px',
           width: 64,

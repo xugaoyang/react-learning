@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import counterReducer from './modules/counter'
 import channelReducer from './modules/channel'
 import userReducer from './modules/user'
+import settingReducer from './modules/setting'
 
 const persistConfig = {
   key: 'root',
@@ -14,6 +15,7 @@ const rootReducers = combineReducers({
   counter: counterReducer,
   channel: channelReducer,
   user: userReducer,
+  setting: settingReducer
 })
 const persistedReducer = persistReducer(persistConfig, rootReducers)
 

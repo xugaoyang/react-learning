@@ -1,11 +1,11 @@
 import { request } from '@/utils'
 
-const login = async (form) => {
+const loginApi = async (form) => {
   return await request.post('/authorizations', form)
 }
 
-const getUser = async () => {
+const getUserApi = async () => {
   return await request.get('/user/profile')
 }
 
-export { login, getUser }
+export { loginApi, getUserApi }

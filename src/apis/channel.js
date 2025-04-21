@@ -1,7 +1,7 @@
 import { request } from '@/utils'
 
-const getChannelList = async () => {
+const getChannelListApi = async () => {
   return await request.get('/channels')
 }
 
-export { getChannelList }
+export { getChannelListApi }

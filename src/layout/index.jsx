@@ -9,11 +9,16 @@ import {
 import { Button, Layout, Menu, theme } from 'antd'
 import reactLogo from '@/assets/react.svg'
 import AppHeader from './AppHeader'
+import { useSelector, useDispatch } from 'react-redux'
+import { setMenuDefaultKey } from '@/store/modules/setting'
 
 const { Sider, Content } = Layout
 
 function AppLayout() {
-  const [collapsed, setCollapsed] = useState(false)
+  const { isCollapse,menuDefaultKey } = useSelector((state) => state.setting)
+  const dispatch = useDispatch()
+  // const [collapsed, setCollapsed] = useState(false)
+  // const [defaultKey, setDefaultKey] = useState('/')
   const {
     token: { borderRadiusLG, colorBgContainer },
   } = theme.useToken()
@@ -42,18 +47,19 @@ function AppLayout() {
   ]
   const onClick = (e) => {
     console.log('点击菜单', e)
+    dispatch(setMenuDefaultKey(e.key))
     navigate(e.key)
   }
   return (
     <Layout className="w-full h-full">
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider trigger={null} collapsible collapsed={isCollapse}>
         <div className="h-[64px] flex justify-center items-center">
           <img src={reactLogo} alt="" />
         </div>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['/']} items={items} onClick={onClick} />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={[menuDefaultKey]} items={items} onClick={onClick} />
       </Sider>
       <Layout>
-        <AppHeader setCollapsed={setCollapsed} collapsed={collapsed}/>
+        <AppHeader />
         <Content
           style={{
             margin: '24px 16px',

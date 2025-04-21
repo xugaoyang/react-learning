@@ -5,14 +5,14 @@ import reactLogo from '@/assets/react.svg'
 import viteLogo from '/vite.svg'
 import {setToken} from '@/store/modules/user'
 import { useDispatch } from 'react-redux'
-import { login } from '@/apis/user'
+import { loginApi } from '@/apis/user'
 
 function Login() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const onFinish = async (values) => {
     console.log('Success:', values)
-    const res = await login(values)
+    const res = await loginApi(values)
     dispatch(setToken(res.data.token))
     message.success('登陆成功!')
     navigate('/')
