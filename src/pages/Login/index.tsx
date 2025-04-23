@@ -10,14 +10,14 @@ import { loginApi } from '@/apis/user'
 function Login() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const onFinish = async (values) => {
+  const onFinish = async (values:any) => {
     console.log('Success:', values)
     const res = await loginApi(values)
     dispatch(setToken(res.data.token))
     message.success('登陆成功!')
     navigate('/')
   }
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = (errorInfo:any) => {
     console.log('Failed:', errorInfo)
   }
   return (

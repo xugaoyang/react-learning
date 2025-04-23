@@ -12,8 +12,8 @@ const { Header } = Layout
 
 function AppHeader() {
   const navigate = useNavigate()
-  const { userInfo } = useSelector((state) => state.user)
-  const { isCollapse } = useSelector((state) => state.setting)
+  const { userInfo } = useSelector((state:any) => state.user)
+  const { isCollapse } = useSelector((state:any) => state.setting)
   const dispatch = useDispatch()
   const getUserFn = async () => {
     const res = await getUserApi()

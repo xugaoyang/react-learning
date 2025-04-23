@@ -6,7 +6,7 @@
 
 1. js 框架: `react@19`
 2. UI 框架: `antd`
-3. 语法: `javascript`
+3. 语法: `typescript`
 4. 状态管理: `redux/toolkit`+`react-redux`+`redux-persist`
 5. 编译打包: `vite`
 6. 公共样式库: `tailwindcss`

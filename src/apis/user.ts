@@ -1,6 +1,11 @@
 import { request } from '@/utils'
 
-const loginApi = async (form) => {
+type LoginForm = {
+  mobile: string
+  code: string
+}
+
+const loginApi = async (form: LoginForm) => {
   return await request.post('/authorizations', form)
 }
 

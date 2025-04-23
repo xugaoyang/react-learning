@@ -9,7 +9,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import '@ant-design/v5-patch-for-react-19'
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

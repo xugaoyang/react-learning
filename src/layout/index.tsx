@@ -10,7 +10,7 @@ import { setMenuDefaultKey } from '@/store/modules/setting'
 const { Sider, Content } = Layout
 
 function AppLayout() {
-  const { isCollapse, menuDefaultKey } = useSelector((state) => state.setting)
+  const { isCollapse, menuDefaultKey } = useSelector((state:any) => state.setting)
   const dispatch = useDispatch()
   const {
     token: { borderRadiusLG, colorBgContainer },
@@ -38,7 +38,7 @@ function AppLayout() {
       icon: <MailOutlined />,
     },
   ]
-  const onClick = (e) => {
+  const onClick = (e:any) => {
     console.log('点击菜单', e)
     dispatch(setMenuDefaultKey(e.key))
     navigate(e.key)
