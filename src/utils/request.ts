@@ -7,8 +7,9 @@ import { store } from '@/store'
  * 3. 请求拦截器、响应拦截器
  */
 
+const baseURL = import.meta.env.VITE_BASEURL
 const request = axios.create({
-  baseURL: 'http://geek.itheima.net/v1_0',
+  baseURL: baseURL,
   timeout: 5000,
 })
 
