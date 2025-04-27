@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons';
 import { getUserApi } from '@/apis/user';
 import { setUserInfo, clearUserInfo } from '@/store/modules/user';
-import { setIsCollapse, setDefaultLang } from '@/store/modules/setting';
+import { setIsCollapse, setDefaultLang, setDefaultTheme} from '@/store/modules/setting';
 
 const { Header } = Layout;
 
@@ -37,16 +37,16 @@ function AppHeader() {
 
   const themeItems: MenuProps['items'] = [
     {
-      key: '1',
-      label: <span>黑</span>,
+      key: 'light',
+      label: <span>白</span>,
     },
     {
-      key: '2',
-      label: <span>白</span>,
+      key: 'dark',
+      label: <span>暗</span>,
     },
   ];
   const themeOnClick: MenuProps['onClick'] = ({ key }) => {
-    console.info(`theme Click on item ${key}`);
+    dispatch(setDefaultTheme(key))
   };
   const langItems: MenuProps['items'] = [
     {
