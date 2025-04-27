@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import App from '@/pages/Home/App'
+import Home from '@/pages/Home/Home'
 import Game from '@/pages/Game'
 import Error from '@/pages/404'
 import AppLayout from '@/layout/index'
@@ -18,7 +18,7 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true, // 默认子路由
-        element: <App />,
+        element: <Home />,
       },
       {
         path: 'game',

@@ -1,37 +1,71 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import type { PopconfirmProps } from 'antd'
-import { Layout, theme, Button, Popconfirm } from 'antd'
-import { MenuFoldOutlined, MenuUnfoldOutlined, LoginOutlined } from '@ant-design/icons'
-import { getUserApi } from '@/apis/user'
-import { setUserInfo, clearUserInfo } from '@/store/modules/user'
-import { setIsCollapse } from '@/store/modules/setting'
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import type { PopconfirmProps, MenuProps } from 'antd';
+import { Layout, theme, Button, Popconfirm, Dropdown, Space } from 'antd';
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  LoginOutlined,
+} from '@ant-design/icons';
+import { getUserApi } from '@/apis/user';
+import { setUserInfo, clearUserInfo } from '@/store/modules/user';
+import { setIsCollapse, setDefaultLang } from '@/store/modules/setting';
 
-const { Header } = Layout
+const { Header } = Layout;
 
 function AppHeader() {
-  const navigate = useNavigate()
-  const { userInfo } = useSelector((state:any) => state.user)
-  const { isCollapse } = useSelector((state:any) => state.setting)
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const { userInfo } = useSelector((state: any) => state.user);
+  const { isCollapse } = useSelector((state: any) => state.setting);
+  const dispatch = useDispatch();
   const getUserFn = async () => {
-    const res = await getUserApi()
-    dispatch(setUserInfo(res.data))
-  }
+    const res = await getUserApi();
+    dispatch(setUserInfo(res.data));
+  };
   useEffect(() => {
-    getUserFn()
-  }, [])
+    getUserFn();
+  }, []);
   const confirmLogout: PopconfirmProps['onConfirm'] = () => {
     // 清除用户信息；进入登录
-    dispatch(clearUserInfo())
-    navigate('/login')
-  }
+    dispatch(clearUserInfo());
+    navigate('/login');
+  };
   const {
     token: { colorBgContainer },
-  } = theme.useToken()
+  } = theme.useToken();
+
+  const themeItems: MenuProps['items'] = [
+    {
+      key: '1',
+      label: <span>黑</span>,
+    },
+    {
+      key: '2',
+      label: <span>白</span>,
+    },
+  ];
+  const themeOnClick: MenuProps['onClick'] = ({ key }) => {
+    console.info(`theme Click on item ${key}`);
+  };
+  const langItems: MenuProps['items'] = [
+    {
+      key: 'zh_CN',
+      label: <span>中</span>,
+    },
+    {
+      key: 'en_US',
+      label: <span>英</span>,
+    },
+  ];
+  const langOnClick: MenuProps['onClick'] = ({ key }) => {
+    dispatch(setDefaultLang(key))
+  };
   return (
-    <Header style={{ padding: 0, background: colorBgContainer }} className="flex justify-between">
+    <Header
+      style={{ padding: 0, background: colorBgContainer }}
+      className="flex justify-between"
+    >
       <Button
         type="text"
         icon={isCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -42,9 +76,25 @@ function AppHeader() {
           height: 64,
         }}
       />
-      <div className="flex justify-center items-center text-[20px]">
-        <img className="w-[20px] h-[20px] rounded-full mr-[10px]" src={userInfo.photo} alt="" />
-        <span className="mr-[10px]">{userInfo.name}</span>
+      <Space className="text-[16px]">
+        <Dropdown
+          menu={{ items: themeItems, onClick: themeOnClick }}
+          placement="bottom"
+        >
+          主题
+        </Dropdown>
+        <Dropdown
+          menu={{ items: langItems, onClick: langOnClick }}
+          placement="bottom"
+        >
+          语言
+        </Dropdown>
+        <img
+          className="w-[24px] h-[24px] rounded-full"
+          src={userInfo.photo}
+          alt=""
+        />
+        <span>{userInfo.name}</span>
         <Popconfirm
           title=""
           placement="left"
@@ -55,9 +105,9 @@ function AppHeader() {
         >
           <LoginOutlined className="mr-[10px] cursor-pointer" />
         </Popconfirm>
-      </div>
+      </Space>
     </Header>
-  )
+  );
 }
 
-export default AppHeader
+export default AppHeader;

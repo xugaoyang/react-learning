@@ -1,0 +1,18 @@
+import { RouterProvider } from 'react-router-dom';
+import routes from './router';
+import { useSelector, useDispatch } from 'react-redux';
+import { ConfigProvider } from 'antd';
+import '@ant-design/v5-patch-for-react-19';
+import { zhCN, enUS } from './i18n';
+
+function App() {
+  const { defaultLang } = useSelector((state: any) => state.setting);
+  const locale = defaultLang === 'zh_CN' ? zhCN : enUS;
+  return (
+    <ConfigProvider locale={locale}>
+      <RouterProvider router={routes} />
+    </ConfigProvider>
+  );
+}
+
+export default App;
