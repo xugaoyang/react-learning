@@ -1,4 +1,4 @@
-# React + Vite + Ts
+# React Admin System
 
 > 采用 react19 从 0 搭建一套完整的后台管理系统
 
