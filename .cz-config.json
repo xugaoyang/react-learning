@@ -1,35 +1,52 @@
 {
   "types": [
-    { "value": "✨feat", "name": "特性:    一个新的特性" },
-    { "value": "🐛fix", "name": "修复:    修复一个Bug" },
-    { "value": "📝docs", "name": "文档:    变更的只有文档" },
-    { "value": "💄style", "name": "格式:    空格, 分号等格式修复" },
+    { "value": "✨feat", "name": "特性:    新增功能 | A new feature" },
+    { "value": "🐛fix", "name": "修复:    修复缺陷 | A bug fix" },
+    {
+      "value": "📝docs",
+      "name": "文档:    文档更新 | Documentation only changes"
+    },
+    {
+      "value": "💄style",
+      "name": "格式:    代码格式 | Changes that do not affect the meaning of the code"
+    },
     {
       "value": "♻️refactor",
-      "name": "重构:    代码重构，注意和特性、修复区分开"
+      "name": "重构:    代码重构| A code change that neither fixes a bug nor adds a feature"
     },
-    { "value": "⚡️perf", "name": "性能:    提升性能" },
-    { "value": "✅test", "name": "测试:    添加一个测试" },
-    { "value": "🔧chore", "name": "工具:    开发工具变动(构建、脚手架工具等)" },
-    { "value": "⏪revert", "name": "回滚:    代码回退" }
-  ],
-  "scopes": [
-    { "name": "模块1" },
-    { "name": "模块2" },
-    { "name": "模块3" },
-    { "name": "模块4" }
+    {
+      "value": "⚡️perf",
+      "name": "性能:    性能提升 | A code change that improves performance"
+    },
+    {
+      "value": "✅test",
+      "name": "测试:    测试相关 | Adding missing tests or correcting existing tests"
+    },
+    {
+      "value": "📦️build",
+      "name": "工具:    构建流程、外部依赖变更 | Changes that affect the build system or external dependencies"
+    },
+    {
+      "value": "🎡ci",
+      "name": "集成:    持续集成| Changes to our CI configuration files and scripts"
+    },
+    { "value": "⏪revert", "name": "回滚:    代码回退 | Revert to a commit" },
+    {
+      "value": "🔨chore",
+      "name": "其他:    对构建过程或辅助工具和库的更改（不影响源文件、测试用例） | Other changes that do not modify src or test files"
+    }
   ],
   "messages": {
-    "type": "选择一种你的提交类型:",
-    "scope": "选择一个scope (可选):",
-    "customScope": "Denote the SCOPE of this change:",
-    "subject": "短说明:\n",
-    "body": "长说明，使用\"|\"换行(可选)：\n",
-    "breaking": "非兼容性说明 (可选):\n",
-    "footer": "关联关闭的issue，例如：#31, #34(可选):\n",
+    "type": "选择你要提交的类型:",
+    "customScope": "请输入自定义的提交范围",
+    "subject": "填写简短的变更描述:\n",
+    "body": "填写详细的变更描述，使用\"|\"换行(可选):\n",
+    "breaking": "列举非兼容性重大的变更 (可选):\n",
+    "footer": "关联关闭的issue，例如：#1, #2(可选):\n",
     "confirmCommit": "确定提交说明?"
   },
   "allowCustomScopes": true,
-  "allowBreakingChanges": ["特性", "修复"],
-  "subjectLimit": 100
+  "allowBreakingChanges": ["feat", "fix"],
+  "subjectLimit": 100,
+  "defaultScope": ""
 }
