@@ -11,7 +11,7 @@ function App() {
   const antdAlgorithm = defaultTheme === 'light'?theme.defaultAlgorithm:theme.darkAlgorithm
   return (
     <ConfigProvider locale={locale} theme={{
-      algorithm: antdAlgorithm
+      algorithm: antdAlgorithm,
     }}>
       <RouterProvider router={routes} />
     </ConfigProvider>

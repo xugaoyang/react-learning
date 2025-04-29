@@ -81,13 +81,13 @@ function AppHeader() {
           menu={{ items: themeItems, onClick: themeOnClick }}
           placement="bottom"
         >
-          主题
+          <span className="i-mdi-theme-light-dark icon-24"></span>
         </Dropdown>
         <Dropdown
           menu={{ items: langItems, onClick: langOnClick }}
           placement="bottom"
         >
-          语言
+          <span className="i-mdi-google-translate icon-24"></span>
         </Dropdown>
         <img
           className="w-[24px] h-[24px] rounded-full"

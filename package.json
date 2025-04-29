@@ -19,19 +19,18 @@
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@reduxjs/toolkit": "^2.6.1",
     "antd": "^5.24.7",
-    "autoprefixer": "^10.4.16",
     "axios": "^1.8.4",
     "postcss": "^8.4.31",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.5.0",
-    "redux-persist": "^6.0.0",
-    "tailwindcss": "^3.4.17"
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.8.0",
     "@eslint/js": "^9.21.0",
+    "@iconify-json/mdi": "^1.2.3",
     "@types/node": "^22.14.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
@@ -39,7 +38,10 @@
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^8.31.0",
     "@typescript-eslint/parser": "^8.31.0",
+    "@unocss/preset-icons": "^66.1.0-beta.12",
+    "@unocss/preset-wind4": "^66.1.0-beta.12",
     "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
     "commitizen": "^4.3.1",
     "commitlint": "^19.8.0",
     "commitlint-config-cz": "^0.13.3",
@@ -61,6 +63,7 @@
     "prettier": "^3.5.3",
     "sass": "^1.86.3",
     "typescript": "^5.8.3",
+    "unocss": "^66.1.0-beta.12",
     "vite": "^6.2.0"
   },
   "lint-staged": {
