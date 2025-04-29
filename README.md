@@ -26,7 +26,7 @@
 2. 语法检查--ts: `eslint`
 3. 语法检查--css: `stylelint`
 4. git 代码提交约束: `husky`+`lint-staged`
-5. git 提交模版: `commitizen`+`cz-customizable`
+5. git 提交模版: `commitizen`+`cz-git`
 
 ### 4. 基础功能
 
