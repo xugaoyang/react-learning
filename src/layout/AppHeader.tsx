@@ -10,14 +10,20 @@ import {
 } from '@ant-design/icons';
 import { getUserApi } from '@/apis/user';
 import { setUserInfo, clearUserInfo } from '@/store/modules/user';
-import { setIsCollapse, setDefaultLang, setDefaultTheme} from '@/store/modules/setting';
+import {
+  setIsCollapse,
+  setDefaultLang,
+  setDefaultTheme,
+} from '@/store/modules/setting';
 
 const { Header } = Layout;
 
 function AppHeader() {
   const navigate = useNavigate();
   const { userInfo } = useSelector((state: any) => state.user);
-  const { isCollapse } = useSelector((state: any) => state.setting);
+  const { isCollapse, defaultLang, defaultTheme } = useSelector(
+    (state: any) => state.setting,
+  );
   const dispatch = useDispatch();
   const getUserFn = async () => {
     const res = await getUserApi();
@@ -46,7 +52,7 @@ function AppHeader() {
     },
   ];
   const themeOnClick: MenuProps['onClick'] = ({ key }) => {
-    dispatch(setDefaultTheme(key))
+    dispatch(setDefaultTheme(key));
   };
   const langItems: MenuProps['items'] = [
     {
@@ -59,7 +65,7 @@ function AppHeader() {
     },
   ];
   const langOnClick: MenuProps['onClick'] = ({ key }) => {
-    dispatch(setDefaultLang(key))
+    dispatch(setDefaultLang(key));
   };
   return (
     <Header
@@ -78,16 +84,26 @@ function AppHeader() {
       />
       <Space className="text-[16px]">
         <Dropdown
-          menu={{ items: themeItems, onClick: themeOnClick }}
+          menu={{
+            items: themeItems,
+            selectable: true,
+            defaultSelectedKeys: [defaultTheme],
+            onClick: themeOnClick,
+          }}
           placement="bottom"
         >
-          <span className="i-mdi-theme-light-dark icon-24"></span>
+          <span className="i-mdi-theme-light-dark icon-24 cursor-pointer"></span>
         </Dropdown>
         <Dropdown
-          menu={{ items: langItems, onClick: langOnClick }}
+          menu={{
+            items: langItems,
+            selectable: true,
+            defaultSelectedKeys: [defaultLang],
+            onClick: langOnClick,
+          }}
           placement="bottom"
         >
-          <span className="i-mdi-google-translate icon-24"></span>
+          <span className="i-mdi-google-translate icon-24 cursor-pointer"></span>
         </Dropdown>
         <img
           className="w-[24px] h-[24px] rounded-full"

@@ -9,9 +9,10 @@
 3. 语法: `typescript`
 4. 状态管理: `redux/toolkit`+`react-redux`+`redux-persist`
 5. 编译打包: `vite`
-6. 公共样式库: `tailwindcss`
-7. 包管理器: `npm`
-8. css 语法: `sass`
+6. 公共样式库: `unocss`
+7. 图标库: `iconify`
+8. 包管理器: `npm`
+9. css 语法: `sass`
 
 ### 2. 常用插件库
 
@@ -30,12 +31,13 @@
 ### 4. 基础功能
 
 - [x] 登录
-- [ ] 主题切换
+- [x] 主题切换
 - [ ] 动态 Layout
-- [ ] 请求封装
+- [x] 请求封装
 - [ ] mock 接口
 - [x] redux 持久化
 - [ ] 多语言
 - [ ] 移动端案例
 - [x] 代码格式校验
 - [x] git 提交模板
+
