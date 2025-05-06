@@ -1,0 +1,24 @@
+{
+  "user": [
+    {
+      "id": 0,
+      "name": "Curry",
+      "age": "18"
+    },
+    {
+      "id": 1,
+      "name": "James",
+      "age": "18"
+    },
+    {
+      "id": 2,
+      "name": "Durant",
+      "age": "18"
+    },
+    {
+      "id": 3,
+      "name": "Jokic",
+      "age": "18"
+    }
+  ]
+}

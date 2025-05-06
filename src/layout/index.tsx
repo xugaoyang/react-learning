@@ -37,6 +37,11 @@ function AppLayout() {
       label: 'article',
       icon: <MailOutlined />,
     },
+    {
+      key: '/bill',
+      label: 'mobile-demo',
+      icon: <MailOutlined />,
+    },
   ]
   const onClick = (e:any) => {
     console.log('点击菜单', e)
