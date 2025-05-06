@@ -20,5 +20,87 @@
       "name": "Jokic",
       "age": "18"
     }
+  ],
+  "billList":[
+    {
+      "id": "1",
+      "type": "pay",
+      "useFor": "food",
+      "icon": "mdi-food",
+      "date": "2025-5-1 12:00:00",
+      "value": 100
+    },
+    {
+      "id": "2",
+      "type": "income",
+      "useFor": "salary",
+      "icon": "mdi-currency-cny",
+      "date": "2025-5-1 10:00:00",
+      "value": 20000
+    },
+    {
+      "id": "3",
+      "type": "pay",
+      "useFor": "drinks",
+      "icon": "mdi-beer",
+      "date": "2025-5-1 13:00:00",
+      "value": 50
+    },
+    {
+      "id": "4",
+      "type": "pay",
+      "useFor": "drinks",
+      "icon": "mdi-beer",
+      "date": "2025-4-28 14:00:00",
+      "value": 50
+    },
+    {
+      "id": "5",
+      "type": "pay",
+      "useFor": "drinks",
+      "icon": "mdi-beer",
+      "date": "2025-4-29 10:00:00",
+      "value": 50
+    },
+    {
+      "id": "6",
+      "type": "pay",
+      "useFor": "drinks",
+      "icon": "mdi-beer",
+      "date": "2025-5-4 16:00:00",
+      "value": 50
+    },
+    {
+      "id": "7",
+      "type": "pay",
+      "useFor": "drinks",
+      "icon": "mdi-beer",
+      "date": "2025-5-3 15:00:00",
+      "value": 50
+    },
+    {
+      "id": "8",
+      "type": "pay",
+      "useFor": "drinks",
+      "icon": "mdi-beer",
+      "date": "2025-5-2 14:00:00",
+      "value": 50
+    },
+    {
+      "id": "9",
+      "type": "pay",
+      "useFor": "transportation",
+      "icon": "mdi-plane-train",
+      "date": "2025-4-28 18:00:00",
+      "value": 2000
+    },
+    {
+      "id": "10",
+      "type": "pay",
+      "useFor": "game",
+      "icon": "mdi-controller",
+      "date": "2025-5-4 10:00:00",
+      "value": 200
+    }
   ]
 }
