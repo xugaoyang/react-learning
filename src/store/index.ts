@@ -6,6 +6,7 @@ import counterReducer from './modules/counter'
 import channelReducer from './modules/channel'
 import userReducer from './modules/user'
 import settingReducer from './modules/setting'
+import billReducer from './modules/bill'
 
 const persistConfig = {
   key: 'root',
@@ -15,7 +16,8 @@ const rootReducers = combineReducers({
   counter: counterReducer,
   channel: channelReducer,
   user: userReducer,
-  setting: settingReducer
+  setting: settingReducer,
+  bill: billReducer
 })
 const persistedReducer = persistReducer(persistConfig, rootReducers)
 
