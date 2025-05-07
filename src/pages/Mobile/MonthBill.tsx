@@ -62,7 +62,7 @@ function MonthBill() {
           visible={datePickerShow}
           style={{ height: '30%' }}
           position="bottom"
-          onClose={() => setDatePickerShow(true)}
+          onClose={() => setDatePickerShow(false)}
         >
           <DatetimePicker
             title="选择年月"
