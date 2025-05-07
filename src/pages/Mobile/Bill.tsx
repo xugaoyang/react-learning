@@ -3,6 +3,8 @@ import { useNavigate, Outlet, useLocation } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { Tabbar } from 'react-vant';
 import { setTabName } from '@/store/modules/bill';
+import './bill.scss'
+
 function Bill() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,8 +18,10 @@ function Bill() {
     navigate(name);
   };
   return (
-    <div className="p-2">
-      <Outlet />
+    <div id="bill" className="p-2">
+      <div className="bill-content">
+        <Outlet />
+      </div>
       <Tabbar value={tabName} onChange={v => tabChange(v as string)}>
         <Tabbar.Item
           name="/bill/year"
