@@ -19,6 +19,13 @@ export default defineConfig({
       },
     }),
   ],
+  safelist: [
+    'i-mdi-food',
+    'i-mdi-beer',
+    'i-mdi-currency-cny',
+    'i-mdi-plane-train',
+    'i-mdi-controller'
+  ],
   // 可选：自定义规则
   rules: [
     // 例如定义图标大小快捷类

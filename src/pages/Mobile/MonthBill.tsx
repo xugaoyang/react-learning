@@ -5,47 +5,84 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setBillList } from '@/store/modules/bill';
 import { billListApi } from '@/apis/bill';
 import dayjs from 'dayjs';
+import { sortBy, groupBy, forIn, sumBy } from 'lodash-es';
 
 function MonthBill() {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const yearMonthDate = `${currentDate.getFullYear()} - ${currentDate.getMonth()}月`;
+  const [payMonth, setPayMonth] = useState(0)
+  const [incomeMonth, setIncomeMonth] = useState(0)
+  const yearMonthDate = `${new Date().getFullYear()} - ${new Date().getMonth() + 1}月`;
   const { billList } = useSelector(state => state.bill);
   const dispatch = useDispatch();
   useEffect(() => {
     const getBillList = async () => {
       const res = await billListApi();
-      console.log('json-server res', res);
-      dispatch(setBillList(res));
+
+      const paydata = res.filter(val => val.type === 'pay');
+      const incomedata = res.filter(val => val.type === 'income');
+      setPayMonth(sumBy(paydata, 'value'))
+      setIncomeMonth(sumBy(incomedata, 'value'))
+      const sortdata = sortBy(res, ['date']);
+      let groupdata = [];
+      forIn(
+        groupBy(sortdata, val => dayjs(val.date).format('YYYY-MM-DD')),
+        (val, key) => {
+          groupdata.push({
+            date: key,
+            children: val,
+          });
+        },
+      );
+      dispatch(setBillList(groupdata));
     };
     getBillList();
   }, []);
 
   return (
     <>
-      <div className="bg-yellow-400 h-full rounded">
+      <div className="bg-yellow-400 h-full rounded p-2">
         <div>{yearMonthDate}账单</div>
-        <Space>
+        <Space gap={60} className="flex justify-between p-2">
           <div>
-            <p>支出</p>
-            <span>180.00</span>
+            <p className="flex items-center text-pink-500"><span className="i-mdi-checkbook-arrow-right mr-1"></span>支出</p>
+            <span className="text-pink-500 text-xl">{payMonth.toFixed(2)}</span>
           </div>
           <div>
-            <p>收入</p>
-            <span>180.00</span>
+            <p className="flex items-center text-green-500"><span className="i-mdi-checkbook-arrow-left  mr-1"></span>收入</p>
+            <span className="text-green-500 text-xl">{incomeMonth.toFixed(2)}</span>
           </div>
           <div>
-            <p>结余</p>
-            <span>180.00</span>
+            <p className="flex items-center text-blue-500"><span className="i-mdi-piggy-bank-outline  mr-1"></span>结余</p>
+            <span className="text-xl text-blue-500">{(incomeMonth - payMonth).toFixed(2)}</span>
           </div>
         </Space>
       </div>
       <Collapse>
         {billList.map(item => (
-          <Collapse.Item
-            title={dayjs(item.date).format('MM月DD日')}
-            name={item.id}
-          >
-            {item.value}
+          <Collapse.Item title={item.date} name={item.date}>
+            {item.children.map(child => (
+              <div className="flex justify-between p-2" key={child.id}>
+                <div className="flex justify-center items-baseline">
+                  <span
+                    className={`i-${child.icon} bg-yellow-500 mr-1 text-xl`}
+                  ></span>
+                  <span className="font-bold text-black text-xl mr-2">
+                    {child.useFor}
+                  </span>
+                  <span className="text-xs">
+                    {dayjs(child.date).format('HH:mm')}
+                  </span>
+                </div>
+                {child.type === 'pay' ? (
+                  <span className="font-bold text-pink-500 text-xl">
+                    {child.value}
+                  </span>
+                ) : (
+                  <span className="font-bold text-green-500 text-xl">
+                    {child.value}
+                  </span>
+                )}
+              </div>
+            ))}
           </Collapse.Item>
         ))}
       </Collapse>
