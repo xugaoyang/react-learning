@@ -24,8 +24,10 @@ function MonthBill() {
       const res = await billListApi();
       dispatch(setBillList(res));
     };
-    getBillList();
-  }, []);
+    if (billList.length === 0) {
+      getBillList();
+    }
+  }, [dispatch, billList]);
   const groupdata = useMemo(() => {
     return groupBy(billList, val =>
       dayjs(val.date).format('YYYY-MM').toString(),
@@ -53,7 +55,6 @@ function MonthBill() {
     const data = groupBy(currentMonthData.children, val =>
       dayjs(val.date).format('YYYY-MM-DD').toString(),
     );
-    console.log('每天数据', data);
     forIn(data, (val, key) => {
       const paySum = sumBy(
         val.filter(v => v.type === 'pay'),
@@ -141,7 +142,7 @@ function MonthBill() {
         </Space>
       </div>
       {dayData.map(item => (
-        <BillDay billDayData={item}></BillDay>
+        <BillDay billDayData={item} key={item.date}></BillDay>
       ))}
     </>
   );

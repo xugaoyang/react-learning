@@ -1,5 +1,21 @@
-import presetWind4 from '@unocss/preset-wind4'
+import presetWind4 from '@unocss/preset-wind4';
 import { defineConfig, presetIcons } from 'unocss';
+
+const dynamicIcons = [
+  'i-mdi-beer',
+  'i-mdi-food',
+  'i-mdi-taxi',
+  'i-mdi-train',
+  'i-mdi-subway',
+  'i-mdi-plane-train',
+  'i-mdi-film',
+  'i-mdi-panorama-outline',
+  'i-mdi-tshirt-crew-outline',
+  'i-mdi-shoe-ballet',
+  'i-mdi-cash-100',
+  'i-mdi-cash-clock',
+  'i-mdi-currency-cny',
+];
 
 export default defineConfig({
   presets: [
@@ -20,11 +36,7 @@ export default defineConfig({
     }),
   ],
   safelist: [
-    'i-mdi-food',
-    'i-mdi-beer',
-    'i-mdi-currency-cny',
-    'i-mdi-plane-train',
-    'i-mdi-controller'
+    ...dynamicIcons
   ],
   // 可选：自定义规则
   rules: [
