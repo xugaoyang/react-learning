@@ -1,16 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+export interface Bill {
+  date: string;
+  type: 'pay' | 'income';
+  value: number;
+  id: string | number;
+  useFor: string;
+  icon: string;
+}
+
+interface BillState {
+  tabName: string;
+  billList: Bill[];
+}
+
+const initialState: BillState = {
+  tabName: '/bill/year',
+  billList: [],
+};
+
 const billStore = createSlice({
   name: 'bill',
-  initialState: {
-    tabName: '/bill/year',
-    billList: [],
-  },
+  initialState,
   reducers: {
-    setTabName(state, action) {
+    setTabName(state, action: { payload: string }) {
       state.tabName = action.payload;
     },
-    setBillList(state, action) {
+    setBillList(state, action: { payload: Bill[] }) {
       state.billList = action.payload;
     },
   },

@@ -2,29 +2,38 @@ import { useState, useMemo, useEffect } from 'react';
 import { DatetimePicker, Space, Popup } from 'react-vant';
 import { useSelector, useDispatch } from 'react-redux';
 import { setBillList } from '@/store/modules/bill';
+import type { RootState } from '@/store';
+import type { Bill } from '@/store/modules/bill';
 import { billListApi } from '@/apis/bill';
 import dayjs from 'dayjs';
 import { sortBy, groupBy, forIn, sumBy } from 'lodash-es';
 import BillDay from './components/BillDay';
 
+interface DayData {
+  date: string;
+  paySum: number;
+  incomeSum: number;
+  children: Bill[];
+}
+
 function MonthBill() {
   const [currentYearMonthDate, setCurrentYearMonthDate] = useState(
     dayjs(new Date()).format('YYYY-MM'),
   );
-  const { billList } = useSelector(state => state.bill);
+  const { billList } = useSelector((state: RootState) => state.bill);
   const dispatch = useDispatch();
   const [datePickerShow, setDatePickerShow] = useState(false);
-  const datePickerChange = val => {
+  const datePickerChange = (val: Date) => {
     setCurrentYearMonthDate(dayjs(val).format('YYYY-MM'));
     setDatePickerShow(false);
   };
 
   useEffect(() => {
     const getBillList = async () => {
-      const res = await billListApi();
-      dispatch(setBillList(res));
+      const data = await billListApi();
+      dispatch(setBillList(data));
     };
-    if (billList.length === 0) {
+    if (billList && billList.length === 0) {
       getBillList();
     }
   }, [dispatch, billList]);
@@ -51,7 +60,7 @@ function MonthBill() {
     };
   }, [currentYearMonthDate, groupdata]);
   const dayData = useMemo(() => {
-    const dayDataArr = [];
+    const dayDataArr: DayData[] = [];
     const data = groupBy(currentMonthData.children, val =>
       dayjs(val.date).format('YYYY-MM-DD').toString(),
     );
@@ -108,7 +117,7 @@ function MonthBill() {
               }
               return val;
             }}
-            onConfirm={value => datePickerChange(value)}
+            onConfirm={(value: Date) => datePickerChange(value)}
             onCancel={() => setDatePickerShow(false)}
           />
         </Popup>

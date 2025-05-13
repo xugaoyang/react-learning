@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, addToNum } from '@/store/modules/counter'
+import type { RootState } from '@/store'
 
 function Counter() {
-  const { count } = useSelector((state) => state.counter)
+  const { count } = useSelector((state: RootState) => state.counter)
   const dispatch = useDispatch()
 
   return (

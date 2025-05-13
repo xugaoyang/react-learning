@@ -26,10 +26,11 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoreActions: ['persist/PERSIST'],
+        ignoredActions: ['persist/PERSIST']
       },
     }),
 })
 
 const persistor = persistStore(store)
+export type RootState = ReturnType<typeof store.getState>
 export { store, persistor }

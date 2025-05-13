@@ -3,13 +3,14 @@ import { useNavigate, Outlet, useLocation } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { Tabbar } from 'react-vant';
 import { setTabName } from '@/store/modules/bill';
+import type { RootState } from '@/store';
 import './bill.scss'
 
 function Bill() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { tabName } = useSelector(state => state.bill);
+  const { tabName } = useSelector((state: RootState) => state.bill);
   useEffect(() => {
     dispatch(setTabName(location.pathname));
   }, [location.pathname]);
