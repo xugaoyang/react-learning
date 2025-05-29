@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import type { PopconfirmProps, MenuProps } from 'antd';
 import { Layout, theme, Button, Popconfirm, Dropdown, Space } from 'antd';
 import {
@@ -19,7 +19,6 @@ import {
 const { Header } = Layout;
 
 function AppHeader() {
-  const navigate = useNavigate();
   const { userInfo } = useSelector((state: any) => state.user);
   const { isCollapse, defaultLang, defaultTheme } = useSelector(
     (state: any) => state.setting,
@@ -33,9 +32,8 @@ function AppHeader() {
     getUserFn();
   }, []);
   const confirmLogout: PopconfirmProps['onConfirm'] = () => {
-    // 清除用户信息；进入登录
+    // 清除用户信息
     dispatch(clearUserInfo());
-    navigate('/login');
   };
   const {
     token: { colorBgContainer },
@@ -119,7 +117,9 @@ function AppHeader() {
           okText="是"
           cancelText="否"
         >
-          <LoginOutlined className="mr-[10px] cursor-pointer" />
+          <Link to="/login">
+            <LoginOutlined className="mr-[10px] cursor-pointer" />
+          </Link>
         </Popconfirm>
       </Space>
     </Header>

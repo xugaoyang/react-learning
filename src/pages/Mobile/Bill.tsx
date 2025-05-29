@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate, Outlet, useLocation } from 'react-router';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Tabbar } from 'react-vant';
 import { setTabName } from '@/store/modules/bill';
@@ -8,16 +8,17 @@ import './bill.scss'
 
 function Bill() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
   const { tabName } = useSelector((state: RootState) => state.bill);
+  
   useEffect(() => {
     dispatch(setTabName(location.pathname));
   }, [location.pathname]);
+
   const tabChange = (name: string) => {
     dispatch(setTabName(name));
-    navigate(name);
   };
+
   return (
     <div id="bill" className="p-2">
       <div className="bill-content">
@@ -26,19 +27,19 @@ function Bill() {
       <Tabbar value={tabName} onChange={v => tabChange(v as string)}>
         <Tabbar.Item
           name="/bill/year"
-          icon={<span className="i-mdi-calendar-month"></span>}
+          icon={<Link to="/bill/year"><span className="i-mdi-calendar-month"></span></Link>}
         >
           year
         </Tabbar.Item>
         <Tabbar.Item
           name="/bill/add"
-          icon={<span className="i-mdi-plus-box"></span>}
+          icon={<Link to="/bill/add"><span className="i-mdi-plus-box"></span></Link>}
         >
           add
         </Tabbar.Item>
         <Tabbar.Item
           name="/bill/month"
-          icon={<span className="i-mdi-calendar"></span>}
+          icon={<Link to="/bill/month"><span className="i-mdi-calendar"></span></Link>}
         >
           month
         </Tabbar.Item>

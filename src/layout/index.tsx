@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate, Outlet } from 'react-router'
+import { Link, Outlet } from 'react-router-dom'
 import { UploadOutlined, UserOutlined, VideoCameraOutlined, MailOutlined } from '@ant-design/icons'
 import { Button, Layout, Menu, theme } from 'antd'
 import reactLogo from '@/assets/react.svg'
@@ -15,39 +15,40 @@ function AppLayout() {
   const {
     token: { borderRadiusLG, colorBgContainer },
   } = theme.useToken()
-  const navigate = useNavigate()
+
   const items = [
     {
       key: '/',
-      label: 'home',
+      label: <Link to="/">home</Link>,
       icon: <UploadOutlined />,
     },
     {
       key: '/counter',
-      label: 'counter',
+      label: <Link to="/counter">counter</Link>,
       icon: <UserOutlined />,
     },
     {
       key: '/channel',
-      label: 'channel',
+      label: <Link to="/channel">channel</Link>,
       icon: <VideoCameraOutlined />,
     },
     {
       key: '/article',
-      label: 'article',
+      label: <Link to="/article">article</Link>,
       icon: <MailOutlined />,
     },
     {
       key: '/bill',
-      label: 'mobile-demo',
+      label: <Link to="/bill">mobile-demo</Link>,
       icon: <MailOutlined />,
     },
   ]
+
   const onClick = (e:any) => {
     console.log('点击菜单', e)
     dispatch(setMenuDefaultKey(e.key))
-    navigate(e.key)
   }
+
   return (
     <Layout className="w-full h-full">
       <Sider trigger={null} collapsible collapsed={isCollapse}>
