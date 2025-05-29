@@ -1,3 +1,4 @@
+import { useState, useMemo, useEffect } from 'react'
 import reactLogo from '@/assets/react.svg'
 import viteLogo from '/vite.svg'
 import type { DatePickerProps } from 'antd';
@@ -7,6 +8,17 @@ function Home() {
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     console.log(date, dateString);
   }
+  const [count, setCount] = useState(0)
+  const res = useMemo(() => {
+    console.log('useMemo count', count)
+    return count + 1
+  }, [count])
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('useEffect count', count)
+      setCount(3)
+    }, 1000)
+  }, [count])
   return (
     <div>
       <div className="flex">

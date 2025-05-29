@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import React, { useState,useEffect } from 'react'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 import { UploadOutlined, UserOutlined, VideoCameraOutlined, MailOutlined } from '@ant-design/icons'
 import { Button, Layout, Menu, theme } from 'antd'
 import reactLogo from '@/assets/react.svg'
@@ -10,6 +10,7 @@ import { setMenuDefaultKey } from '@/store/modules/setting'
 const { Sider, Content } = Layout
 
 function AppLayout() {
+  const location = useLocation();
   const { isCollapse, menuDefaultKey } = useSelector((state:any) => state.setting)
   const dispatch = useDispatch()
   const {
@@ -43,6 +44,10 @@ function AppLayout() {
       icon: <MailOutlined />,
     },
   ]
+  useEffect(() => {
+    const currentPath = location.pathname
+    dispatch(setMenuDefaultKey(currentPath))
+  }, [location.pathname, dispatch])
 
   const onClick = (e:any) => {
     console.log('点击菜单', e)
@@ -58,7 +63,7 @@ function AppLayout() {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={[menuDefaultKey]}
+          selectedKeys={[menuDefaultKey]}
           items={items}
           onClick={onClick}
         />
