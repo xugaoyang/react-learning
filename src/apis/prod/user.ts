@@ -5,6 +5,7 @@ type LoginForm = {
   code: string
 }
 
+
 const loginApi = async (form: LoginForm) => {
   return await request.post('/authorizations', form)
 }

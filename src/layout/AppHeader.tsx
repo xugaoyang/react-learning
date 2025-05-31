@@ -8,7 +8,7 @@ import {
   MenuUnfoldOutlined,
   LoginOutlined,
 } from '@ant-design/icons';
-import { getUserApi } from '@/apis/user';
+import { getUserApi } from '@/apis/mock/user';
 import { setUserInfo, clearUserInfo } from '@/store/modules/user';
 import {
   setIsCollapse,
@@ -105,7 +105,7 @@ function AppHeader() {
         </Dropdown>
         <img
           className="w-[24px] h-[24px] rounded-full"
-          src={userInfo.photo}
+          src={userInfo.avatar}
           alt=""
         />
         <span>{userInfo.name}</span>

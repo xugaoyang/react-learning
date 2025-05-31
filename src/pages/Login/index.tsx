@@ -5,7 +5,7 @@ import reactLogo from '@/assets/react.svg'
 import viteLogo from '/vite.svg'
 import {setToken} from '@/store/modules/user'
 import { useDispatch } from 'react-redux'
-import { loginApi } from '@/apis/user'
+import { loginApi } from '@/apis/mock/user'
 
 function Login() {
   const navigate = useNavigate()
@@ -13,6 +13,7 @@ function Login() {
   const onFinish = async (values:any) => {
     console.log('Success:', values)
     const res = await loginApi(values)
+    console.log('res', res)
     dispatch(setToken(res.data.token))
     message.success('登陆成功!')
     navigate('/')
@@ -39,23 +40,23 @@ function Login() {
           initialValues={{ remember: true }}
         >
           <Form.Item
-            label="mobile"
-            name="mobile"
-            rules={[{ required: true, message: 'Please input your mobile number!' }]}
+            label="用户名"
+            name="username"
+            rules={[{ required: true, message: '请输入用户名!' }]}
           >
-            <Input prefix={<UserOutlined />} placeholder="mobile number" />
+            <Input prefix={<UserOutlined />} placeholder="请输入用户名" />
           </Form.Item>
 
           <Form.Item
-            label="Code"
-            name="code"
-            rules={[{ required: true, message: 'Please input your code!' }]}
+            label="密码"
+            name="password"
+            rules={[{ required: true, message: '请输入密码!' }]}
           >
-            <Input prefix={<LockOutlined />} type="password" placeholder="code" />
+            <Input prefix={<LockOutlined />} type="password" placeholder="请输入密码" />
           </Form.Item>
           <Form.Item label={null}>
             <Button className="w-full" type="primary" htmlType="submit">
-              Submit
+              登录
             </Button>
           </Form.Item>
         </Form>

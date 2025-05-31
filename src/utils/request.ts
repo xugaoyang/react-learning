@@ -9,7 +9,7 @@ import { store } from '@/store'
 
 const baseURL = import.meta.env.VITE_BASEURL
 const request = axios.create({
-  baseURL: baseURL,
+  baseURL: '/',
   timeout: 5000,
 })
 
@@ -32,9 +32,10 @@ request.interceptors.response.use(
     return response.data
   },
   (error) => {
-    if(error.response.status === 401) {
-      window.location.href = '/login'
-    }
+    console.log('响应头', error)
+    // if(error.response.status === 401) {
+    //   window.location.href = '/login'
+    // }
     return Promise.reject(error)
   }
 )
