@@ -1,17 +1,12 @@
 import { useParams } from "react-router-dom"
 import { getArticleDetailApi } from '@/apis/mock/articles'
 import { useEffect, useState } from 'react'
-
-
-interface Article {
-  content: string;
-  // ... existing code ...
-}
+import { ArticleItem } from '@/types/article'
 
 function ArticleDetail() {
   const params = useParams()
   const [error, setError] = useState<string>('')
-  const [article, setArticle] = useState<Article | null>(null)
+  const [article, setArticle] = useState<ArticleItem | null>(null)
   const getDetailFn = async (id: string | undefined) => {
     try {
       if (!id) {
@@ -36,7 +31,11 @@ function ArticleDetail() {
     return <div className="text-red-500">{error}</div>
   }
 
-  return <div className="">{article?.content}</div>
+  return (<div className="">
+    <div className="text-2xl font-bold text-center">{article?.title}</div>
+    <div className="text-sm text-gray-500 flex justify-end"><span className="mr-2" style={{ marginLeft: 'auto' }}>作者：{article?.author}</span><span style={{ marginLeft: 'auto' }}>创建时间：{article?.createTime}</span></div>
+    <div className="text-sm text-gray-700">{article?.content}</div>
+  </div>)
 }
 
 export default ArticleDetail

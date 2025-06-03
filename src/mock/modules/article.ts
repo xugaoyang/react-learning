@@ -36,7 +36,7 @@ const articleApis: MockMethod[] = [
                 data: {
                     id: query.id,
                     title: '@ctitle(10, 20)',
-                    content: '@cparagraph(5, 10)',
+                    content: '@cparagraph(50, 100)',
                     author: '@cname',
                     createTime: '@datetime',
                     'tags|1-3': ['@cword(2,4)'],
