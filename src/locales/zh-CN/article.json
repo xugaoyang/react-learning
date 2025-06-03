@@ -1,0 +1,10 @@
+{
+    "title": "文章标题",
+    "author": "作者",
+    "createTime": "创建时间",
+    "content": "内容",
+    "actions": {
+        "view": "查看详情",
+        "delete": "删除文章"
+    }
+}

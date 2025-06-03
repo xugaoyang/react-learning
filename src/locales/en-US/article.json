@@ -1,0 +1,10 @@
+{
+    "title": "Article Title",
+    "author": "Author",
+    "createTime": "Create Time",
+    "content": "Content",
+    "actions": {
+        "view": "View Details",
+        "delete": "Delete Article"
+    }
+}

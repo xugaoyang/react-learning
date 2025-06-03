@@ -1,0 +1,11 @@
+{
+  "welcome": "Welcome",
+  "language": "Language",
+  "switchLanguage": "Switch Language",
+  "buttons": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "detail": "Detail"
+  }
+}

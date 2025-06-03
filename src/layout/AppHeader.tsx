@@ -15,10 +15,12 @@ import {
   setDefaultLang,
   setDefaultTheme,
 } from '@/store/modules/setting';
-
+import { useTranslation } from 'react-i18next';
+import dayjs from 'dayjs';
 const { Header } = Layout;
 
 function AppHeader() {
+  const { i18n } = useTranslation();
   const { userInfo } = useSelector((state: any) => state.user);
   const { isCollapse, defaultLang, defaultTheme } = useSelector(
     (state: any) => state.setting,
@@ -54,16 +56,18 @@ function AppHeader() {
   };
   const langItems: MenuProps['items'] = [
     {
-      key: 'zh_CN',
+      key: 'zh-CN',
       label: <span>中</span>,
     },
     {
-      key: 'en_US',
+      key: 'en-US',
       label: <span>英</span>,
     },
   ];
   const langOnClick: MenuProps['onClick'] = ({ key }) => {
     dispatch(setDefaultLang(key));
+    i18n.changeLanguage(key);
+    dayjs.locale(key.toLowerCase());
   };
   return (
     <Header

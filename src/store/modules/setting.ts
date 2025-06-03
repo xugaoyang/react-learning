@@ -5,7 +5,7 @@ const settingStore = createSlice({
   initialState: {
     isCollapse: false,
     menuDefaultKey: '/',
-    defaultLang: 'zh_CN',
+    defaultLang: 'zh-CN',
     defaultTheme: 'light',
   },
   reducers: {

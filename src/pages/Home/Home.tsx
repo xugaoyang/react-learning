@@ -3,8 +3,16 @@ import reactLogo from '@/assets/react.svg'
 import viteLogo from '/vite.svg'
 import type { DatePickerProps } from 'antd';
 import { Button, DatePicker, Space } from 'antd';
+import { useTranslation } from 'react-i18next';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
+import 'dayjs/locale/en';
 
 function Home() {
+  const { i18n, t } = useTranslation(['common', 'article']);
+  // 设置 dayjs 的语言
+  dayjs.locale(i18n.language.toLowerCase());
+
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     console.log(date, dateString);
   }
@@ -33,6 +41,10 @@ function Home() {
       <div>
         <Button type="primary">antd按钮</Button>
         <DatePicker onChange={onChange} />
+      </div>
+      <div>
+        <h1>{t('article:title')}</h1>
+        <button>{t('common:buttons.detail')}</button>
       </div>
     </div>
   )
