@@ -16,7 +16,8 @@ import {
   setDefaultTheme,
 } from '@/store/modules/setting';
 import { useTranslation } from 'react-i18next';
-import dayjs from 'dayjs';
+import type { Language } from '@/i18n/antd-locale';
+import { updateDayjsLocale } from '@/i18n/dayjs-locale';
 const { Header } = Layout;
 
 function AppHeader() {
@@ -65,9 +66,10 @@ function AppHeader() {
     },
   ];
   const langOnClick: MenuProps['onClick'] = ({ key }) => {
+
     dispatch(setDefaultLang(key));
     i18n.changeLanguage(key);
-    dayjs.locale(key.toLowerCase());
+    updateDayjsLocale(key as Language);
   };
   return (
     <Header

@@ -1,17 +1,13 @@
 import { useState, useMemo, useEffect } from 'react'
 import reactLogo from '@/assets/react.svg'
 import viteLogo from '/vite.svg'
-import type { DatePickerProps } from 'antd';
-import { Button, DatePicker, Space } from 'antd';
+import type { DatePickerProps, CalendarProps } from 'antd';
+import { Button, DatePicker, Space, Calendar } from 'antd';
 import { useTranslation } from 'react-i18next';
-import dayjs from 'dayjs';
-import 'dayjs/locale/zh-cn';
-import 'dayjs/locale/en';
+import type { Dayjs } from 'dayjs';
 
 function Home() {
-  const { i18n, t } = useTranslation(['common', 'article']);
-  // 设置 dayjs 的语言
-  dayjs.locale(i18n.language.toLowerCase());
+  const { t } = useTranslation(['common', 'article']);
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     console.log(date, dateString);
@@ -27,6 +23,9 @@ function Home() {
       setCount(3)
     }, 1000)
   }, [count])
+  const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
+    console.log(value.format('YYYY-MM-DD'), mode);
+  };
   return (
     <div>
       <div className="flex">
@@ -39,13 +38,15 @@ function Home() {
       </div>
       <h1>Vite + React</h1>
       <div>
-        <Button type="primary">antd按钮</Button>
+        <Button type="primary">{t('common:welcome')}</Button>
         <DatePicker onChange={onChange} />
       </div>
       <div>
+        国际化测试：
         <h1>{t('article:title')}</h1>
         <button>{t('common:buttons.detail')}</button>
       </div>
+      <Calendar onPanelChange={onPanelChange} />
     </div>
   )
 }
