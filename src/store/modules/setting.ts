@@ -1,21 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { styleSettingType, SettingState } from '@/types/setting';
 
+const initialState = {
+  isCollapse: false,
+  menuDefaultKey: '/',
+  defaultLang: 'zh-CN',
+  defaultTheme: 'light',
+  isSettingOpen: false,
+  styleSetting: {
+    themeColor: '#1677ff',
+    sideColor: '#1677ff',
+    headerColor: '#ffffff',
+    layoutStyle: 'withSide'
+  } as styleSettingType
+} as SettingState
+
 const settingStore = createSlice({
   name: 'setting',
-  initialState: {
-    isCollapse: false,
-    menuDefaultKey: '/',
-    defaultLang: 'zh-CN',
-    defaultTheme: 'light',
-    isSettingOpen: false,
-    styleSetting: {
-      themeColor: '#1677ff',
-      sideColor: '#1677ff',
-      headerColor: '#1677ff',
-      layoutStyle: 'withSide'
-    } as styleSettingType
-  } as SettingState,
+  initialState,
   reducers: {
     setIsCollapse(state, action) {
       state.isCollapse = action.payload;
@@ -35,10 +37,13 @@ const settingStore = createSlice({
     setStyleSetting(state, action: { payload: Partial<styleSettingType> }) {
       state.styleSetting = { ...state.styleSetting, ...action.payload };
     },
+    resetstyleSetting(state) {
+      state.styleSetting = { ...state.styleSetting, ...initialState.styleSetting };
+    }
   },
 });
 
-const { setIsCollapse, setMenuDefaultKey, setDefaultLang, setDefaultTheme, setIsSettingOpen, setStyleSetting } =
+const { setIsCollapse, setMenuDefaultKey, setDefaultLang, setDefaultTheme, setIsSettingOpen, setStyleSetting, resetstyleSetting } =
   settingStore.actions;
-export { setIsCollapse, setMenuDefaultKey, setDefaultLang, setDefaultTheme, setIsSettingOpen, setStyleSetting };
+export { setIsCollapse, setMenuDefaultKey, setDefaultLang, setDefaultTheme, setIsSettingOpen, setStyleSetting, resetstyleSetting };
 export default settingStore.reducer;
