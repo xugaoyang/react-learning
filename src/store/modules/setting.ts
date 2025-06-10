@@ -7,6 +7,7 @@ const settingStore = createSlice({
     menuDefaultKey: '/',
     defaultLang: 'zh-CN',
     defaultTheme: 'light',
+    isSettingOpen: false,
   },
   reducers: {
     setIsCollapse(state, action) {
@@ -21,10 +22,13 @@ const settingStore = createSlice({
     setDefaultTheme(state, action) {
       state.defaultTheme = action.payload;
     },
+    setIsSettingOpen(state, action) {
+      state.isSettingOpen = action.payload;
+    },
   },
 });
 
-const { setIsCollapse, setMenuDefaultKey, setDefaultLang, setDefaultTheme } =
+const { setIsCollapse, setMenuDefaultKey, setDefaultLang, setDefaultTheme, setIsSettingOpen } =
   settingStore.actions;
-export { setIsCollapse, setMenuDefaultKey, setDefaultLang, setDefaultTheme };
+export { setIsCollapse, setMenuDefaultKey, setDefaultLang, setDefaultTheme, setIsSettingOpen };
 export default settingStore.reducer;

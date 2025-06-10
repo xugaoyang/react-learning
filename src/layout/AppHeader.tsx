@@ -14,6 +14,7 @@ import {
   setIsCollapse,
   setDefaultLang,
   setDefaultTheme,
+  setIsSettingOpen,
 } from '@/store/modules/setting';
 import { useTranslation } from 'react-i18next';
 import type { Language } from '@/i18n/antd-locale';
@@ -23,7 +24,7 @@ const { Header } = Layout;
 function AppHeader() {
   const { i18n } = useTranslation();
   const { userInfo } = useSelector((state: any) => state.user);
-  const { isCollapse, defaultLang, defaultTheme } = useSelector(
+  const { isCollapse, defaultLang, defaultTheme, isSettingOpen } = useSelector(
     (state: any) => state.setting,
   );
   const dispatch = useDispatch();
@@ -87,6 +88,7 @@ function AppHeader() {
         }}
       />
       <Space className="text-[16px]">
+        <i className="i-mdi-settings-outline icon-24 cursor-pointer" onClick={() => dispatch(setIsSettingOpen(true))}></i>
         <Dropdown
           menu={{
             items: themeItems,

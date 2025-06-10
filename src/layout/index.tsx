@@ -4,6 +4,7 @@ import reactLogo from '@/assets/react.svg'
 import AppHeader from './AppHeader'
 import MenuWithRoute from './Menu'
 import { useSelector } from 'react-redux'
+import Setting from './Setting'
 
 
 const { Sider, Content } = Layout
@@ -36,6 +37,7 @@ function AppLayout() {
           <Outlet />
         </Content>
       </Layout>
+      <Setting></Setting>
     </Layout>
   )
 }
