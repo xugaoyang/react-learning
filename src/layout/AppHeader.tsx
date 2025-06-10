@@ -24,7 +24,7 @@ const { Header } = Layout;
 function AppHeader() {
   const { i18n } = useTranslation();
   const { userInfo } = useSelector((state: any) => state.user);
-  const { isCollapse, defaultLang, defaultTheme, isSettingOpen } = useSelector(
+  const { isCollapse, defaultLang, defaultTheme, styleSetting } = useSelector(
     (state: any) => state.setting,
   );
   const dispatch = useDispatch();
@@ -39,9 +39,6 @@ function AppHeader() {
     // 清除用户信息
     dispatch(clearUserInfo());
   };
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
 
   const themeItems: MenuProps['items'] = [
     {
@@ -74,7 +71,7 @@ function AppHeader() {
   };
   return (
     <Header
-      style={{ padding: 0, background: colorBgContainer }}
+      style={{ padding: 0, background: styleSetting.headerColor }}
       className="flex justify-between"
     >
       <Button

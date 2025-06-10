@@ -50,6 +50,9 @@ function Setting() {
         },
     ]
 
+
+    const resetHandle = () => { }
+    const saveHandle = () => { }
     return (
         <>
             <Drawer
@@ -57,6 +60,12 @@ function Setting() {
                 onClose={onClose}
                 open={isSettingOpen}
                 className="setting-panel"
+                footer={(
+                    <div className='flex justify-center'>
+                        <Button type="primary" danger className="mr-[20px]" onClick={resetHandle}>重置</Button>
+                        <Button type="primary" onClick={saveHandle}>保存</Button>
+                    </div>
+                )}
 
             >
                 <Form
@@ -77,8 +86,8 @@ function Setting() {
                         label="主题色"
                         name="themeColor"
                     >
-                        <ColorPicker 
-                            defaultValue={styleSetting.themeColor} 
+                        <ColorPicker
+                            defaultValue={styleSetting.themeColor}
                             onChange={handleThemeColorChange}
                         />
                     </Form.Item>
@@ -86,8 +95,8 @@ function Setting() {
                         label="头部背景"
                         name="headerColor"
                     >
-                        <ColorPicker 
-                            defaultValue={styleSetting.headerColor} 
+                        <ColorPicker
+                            defaultValue={styleSetting.headerColor}
                             onChange={handleHeaderColorChange}
                         />
                     </Form.Item>
@@ -95,12 +104,14 @@ function Setting() {
                         label="菜单背景"
                         name="sideColor"
                     >
-                        <ColorPicker 
-                            defaultValue={styleSetting.sideColor} 
+                        <ColorPicker
+                            defaultValue={styleSetting.sideColor}
                             onChange={handleSideColorChange}
                         />
                     </Form.Item>
                 </Form>
+
+
             </Drawer>
         </>
     );
